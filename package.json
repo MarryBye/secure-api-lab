@@ -1,0 +1,24 @@
+{
+  "name": "kpz-3",
+  "version": "1.0.0",
+  "description": "Мета: Закріплення теоретичних знань та набуття практичних навичок з розробки, захисту та тестування серверних додатків на базі REST архітектури.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarryBye/secure-api-lab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MarryBye/secure-api-lab/issues"
+  },
+  "homepage": "https://github.com/MarryBye/secure-api-lab#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
