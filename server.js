@@ -6,7 +6,7 @@ const PORT = 3000;
 
 // Middleware для автоматичного парсингу JSON-тіла запиту
 // Це необхідно для роботи POST-запитів
-app.use(express.json());
+
 
 // server.js
 // ... ваш існуючий код (require, app, PORT, app.use(express.json()))
@@ -37,6 +37,21 @@ const authMiddleware = (req, res, next) => {
   next();
 };
 
+const loggingMiddleware = (req, res, next) => {
+  // Отримуємо поточний час, HTTP метод та URL запиту
+  const timestamp = new Date().toISOString();
+  const method = req.method;
+  const url = req.url;
+
+  // Виводимо інформацію в консоль
+  console.log(`[${timestamp}] ${method} ${url}`);
+
+  // ВАЖЛИВО: передаємо управління наступному middleware
+  // Якщо не викликати next(), обробка запиту "зависне" на цьому місці
+
+  next();
+};
+
 const adminOnlyMiddleware = (req, res, next) => {
 
   // Перевіряємо, чи існує об'єкт user і яка в нього роль
@@ -58,7 +73,8 @@ const adminOnlyMiddleware = (req, res, next) => {
 // --- МАРШРУТИ ДЛЯ РЕСУРСІВ ---
 // ... тут будуть ваші маршрути, які ми оновимо на наступному кроці
 
-
+app.use(express.json());
+app.use(loggingMiddleware);
 
 // --- МАРШРУТИ ДЛЯ РЕСУРСІВ --
 
